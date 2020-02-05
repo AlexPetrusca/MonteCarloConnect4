@@ -34,7 +34,11 @@ void printBoard() {
         }
         printf("|%*s\n", i + 1, " ");
     }
-    printf("\n");
+    printf("------------------------------------\n");
+    for (int i = 0; i < NUM_COLUMNS; i++) {
+        printf("| %d  ", i);
+    }
+    printf("|\n");
 }
 
 bool isWin(uint64_t player_bitboard) {

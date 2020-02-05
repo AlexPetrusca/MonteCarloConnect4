@@ -6,5 +6,6 @@ typedef struct _Player {
 } Player;
 
 Player getRandomPlayer();
+Player getUserPlayer();
 
 #endif //CONNECT4_MONTE_CARLO_PLAYERS_H

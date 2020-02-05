@@ -11,7 +11,7 @@ void init() {
 int main() {
     init();
 
-    Player red = getRandomPlayer();
+    Player red = getUserPlayer();
     Player blue = getRandomPlayer();
     playMatch(red, blue);
 }

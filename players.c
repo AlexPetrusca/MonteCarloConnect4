@@ -16,14 +16,21 @@ int makeRandomMove() {
     return move;
 }
 
+int getUserMove() {
+    printf("Enter Move: ");
+    int move = getchar() - 48;
+    getchar(); // consume `\n`
+    return move;
+}
+
 int makeUserMove() {
-    int move = getchar();
-    printf("%d", move);
-//    while (!GET_BIT_8(moves, move)) {
-//        move = (move + 1) % NUM_COLUMNS;
-//    }
-//    makeMove(move);
-//    return move;
+    int move = getUserMove();
+    while (!GET_BIT_8(moves, move)) {
+        printf("Invalid move! Try again.\n");
+        move = getUserMove();
+    }
+    makeMove(move);
+    return move;
 }
 
 Player getUserPlayer() {

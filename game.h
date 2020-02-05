@@ -124,6 +124,7 @@
     DUMP_MOVES(); \
     printf("\n"); \
     printBoard(); \
+    printf("\n"); \
     true
 
 #define TOP_ROW \
@@ -142,10 +143,10 @@
     (isWin(PREVIOUS_BITBOARD) || isDraw())
 
 #define RED_TO_PLAY \
-    (counter & 1)
+    (!(counter & 1))
 
 #define BLUE_TO_PLAY \
-    (!(counter & 1))
+    (counter & 1)
 
 extern int NUM_COLUMNS;
 extern int NUM_ROWS;
