@@ -12,6 +12,7 @@ int main() {
     init();
 
     Player red = getUserPlayer();
-    Player blue = getRandomPlayer();
-    playMatch(red, blue);
+//    Player red = getMonteCarloPlayer();
+    Player blue = getMonteCarloPlayer();
+    playMatches(red, blue, 1);
 }

@@ -5,14 +5,14 @@
 // includes
 #include "game.h"
 #include <stdio.h>
-#include <stdlib.h>
 #ifdef production
 #include <emscripten/emscripten.h>
 #endif
 
-// exports
+
 int NUM_COLUMNS = 7;
 int NUM_ROWS = 6;
+
 uint64_t bitboard[2];
 int heights[7] = { 0, 7, 14, 21, 28, 35, 42 };
 uint8_t moves = 0b01111111;
@@ -68,40 +68,16 @@ uint8_t getMoves() {
     return moves;
 }
 
-void makeMove(int col) {
+void makeMove(unsigned int col) {
     TOGGLE_BIT_64(CURRENT_BITBOARD, heights[col]++);
     getMoves();
     counter++;
 }
 
-int simulateRandomPlayerMove() {
-    // todo: improve random playout
-    int move = rand() % NUM_COLUMNS;
-    while (!GET_BIT_8(moves, move)) {
-        move = (move + 1) % NUM_COLUMNS;
-    }
-    makeMove(move);
-    return move;
-}
-
-int simulateRandomPlayout() {
-    while (!GAME_OVER) {
-        int move = simulateRandomPlayerMove();
-        printf("%s TO PLAY\n", RED_TO_PLAY ? "RED" : "BLUE");
-        printf("MOVE PERFORMED: %d\n", move);
-        printf("------------------------------------------------------------------------------------------\n");
-        DUMP_SNAPSHOT();
-    }
-    if (isWin(bitboard[0])) {
-        printf("Red Wins!\n");
-        return 1;
-    } else if(isWin(bitboard[1])) {
-        printf("Blue Wins!\n");
-        return -1;
-    } else {
-        printf("Draw!\n");
-        return 0;
-    }
+void unmakeMove(unsigned int col) {
+    TOGGLE_BIT_64(PREVIOUS_BITBOARD, --heights[col]);
+    getMoves();
+    counter--;
 }
 
 //#ifdef production
