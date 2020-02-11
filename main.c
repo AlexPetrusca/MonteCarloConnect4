@@ -16,3 +16,11 @@ int main() {
     Player blue = getMonteCarloPlayer();
     playMatches(red, blue, 1);
 }
+
+// TODO: BUGFIX: You are calloc-ing a bunch of memory, this memory needs to be freed (use leaks application)
+
+// TODO: ENHANCEMENT: Add multi-threading for Monte Carlo Player
+// TODO: ENHANCEMENT: Add some sort of benchmarking to gauge optimizations you make
+
+// TODO: FEATURE: Add an AlphaZeroPlayer
+// TODO: (OPTIONAL) FEATURE: Add a StrongMinimaxPlayer
