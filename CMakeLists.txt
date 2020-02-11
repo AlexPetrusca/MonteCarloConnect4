@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.6.2)
 project(connect4_monte_carlo C)
 
 set(CMAKE_C_STANDARD 11)

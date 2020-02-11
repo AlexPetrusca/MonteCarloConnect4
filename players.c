@@ -241,18 +241,7 @@ int timedMonteCarlo() {
     double cpu_time_used;
     start = clock();
 
-    for (int j = 0; j < 10; j++) {
-        Node* root = calloc(1, sizeof(Node));
-        expandNode(root);
-        for (int i = 0; i < 1000000; i++) {
-            Node* node = selectNode(root);
-            expandNode(node);
-            int result = simulatePlayout();
-            backpropogate(node, result);
-        }
-        getMonteCarloMove(root);
-        freeTree(root);
-    }
+    makeMonteCarloMove();
 
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
